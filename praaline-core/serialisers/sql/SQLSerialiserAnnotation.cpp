@@ -369,8 +369,18 @@ AnnotationTierGroup *SQLSerialiserAnnotation::getTiers(
         const QString &annotationID, const QString &speakerID, const QStringList &levelIDs,
         AnnotationStructure *structure, QSqlDatabase &db)
 {
+    // Check which levels exist in the database (out of those requested)
+    QStringList effectiveLevelIDs;
+    if (levelIDs.isEmpty())
+        effectiveLevelIDs = structure->levelIDs();
+    else {
+        foreach (QString levelID, levelIDs) {
+            if (structure->hasLevel(levelID)) effectiveLevelIDs << levelID;
+        }
+    }
+    // Collect data
     AnnotationTierGroup *tiers = new AnnotationTierGroup();
-    foreach (QString levelID, levelIDs) {
+    foreach (QString levelID, effectiveLevelIDs) {
         AnnotationTier *tier = getTier(annotationID, speakerID, levelID, QStringList(), structure, db);
         if (tier) tiers->addTier(tier);
     }
@@ -710,7 +720,8 @@ bool SQLSerialiserAnnotation::batchUpdate(
 // Statistics
 // ==========================================================================================================================
 QList<QPair<QList<QVariant>, long long> > SQLSerialiserAnnotation::countItems(
-        const QString &levelID, const QStringList &groupByAttributeIDs, AnnotationStructure *structure, QSqlDatabase &db)
+        const QString &levelID, const QStringList &groupByAttributeIDs, bool excludeNULL, QStringList excludeValues,
+        AnnotationStructure *structure, QSqlDatabase &db)
 {
     QList<QPair<QList<QVariant>, long long> > list;
     AnnotationStructureLevel *level = structure->level(levelID);
@@ -727,11 +738,21 @@ QList<QPair<QList<QVariant>, long long> > SQLSerialiserAnnotation::countItems(
         q2.append(groupfield).append(", ");
     }
     q1.append(QString("COUNT(*) AS praaline_count FROM %1 ").arg(levelID));
+    if (excludeNULL || !excludeValues.isEmpty()) {
+        q1.append("WHERE 1=1 ");
+        if (excludeNULL) q1.append("AND xText IS NOT NULL ");
+        for (int i = 1; i <= excludeValues.count(); ++i) {
+            q1.append(QString(" AND xText <> :excludedValue%1 ").arg(i));
+        }
+    }
     if (q2.endsWith(", ")) q2.chop(2);
 
     QSqlQuery q(db);
     q.setForwardOnly(true);
     q.prepare(q1 + q2);
+    for (int i = 1; i <= excludeValues.count(); ++i) {
+        q.bindValue(QString(":excludedValue%1").arg(i), excludeValues.at(i - 1));
+    }
 
     q.exec();
     while (q.next()) {

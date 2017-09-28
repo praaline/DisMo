@@ -2,11 +2,11 @@
 #include <QList>
 #include <QScopedPointer>
 
-#include "pncore/corpus/CorpusAnnotation.h"
-#include "pncore/datastore/AnnotationDatastore.h"
-#include "pncore/datastore/CorpusRepository.h"
-#include "pncore/structure/AnnotationStructure.h"
-#include "pncore/interfaces/praat/PraatTextGrid.h"
+#include "corpus/CorpusAnnotation.h"
+#include "datastore/AnnotationDatastore.h"
+#include "datastore/CorpusRepository.h"
+#include "structure/AnnotationStructure.h"
+#include "interfaces/praat/PraatTextGrid.h"
 
 #include "AnnotationInterfacePraat.h"
 
@@ -165,11 +165,13 @@ bool AnnotationInterfacePraat::exportAnnotation(CorpusRepository *repository, co
         }
     }
     else if (d->speakerPolicy == SpeakerPolicy_PrefixTierNames) {
-        QScopedPointer<AnnotationTierGroup> txg(new AnnotationTierGroup(this)); // the TextGrid
+        QScopedPointer<AnnotationTierGroup> txg(new AnnotationTierGroup(this)); // the TextGrid       
         foreach (QString speakerID, tiersAll.keys()) {
             QPointer<AnnotationTierGroup> tiers = tiersAll.value(speakerID);
             if (!tiers) continue;
-            copyToTextgrid(tiers, txg.data(), QString("%1-").arg(speakerID));
+            // Include speaker IDs in the tier name only if there is more than one speaker
+            QString prefixTierNames = (tiersAll.keys().count() > 1) ? QString("%1-").arg(speakerID) : QString();
+            copyToTextgrid(tiers, txg.data(), prefixTierNames);
         }
         if (txg->tiersCount() > 0) {
             result = result && PraatTextGrid::save(d->exportPath + "/" + filename, txg.data());

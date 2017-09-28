@@ -19,7 +19,7 @@
 #include <QObject>
 #include <QString>
 #include <QPointer>
-#include "pncore/corpus/CorpusObjectInfo.h"
+#include "corpus/CorpusObjectInfo.h"
 
 namespace Praaline {
 namespace Core {
@@ -47,6 +47,7 @@ public:
     void setID(const QString &ID);
     QString description() const;
     void setDescription(const QString &description);
+    void setBasePathMedia(const QString &path);
 
     CorpusRepositoryDefinition definition() const;
 
@@ -78,9 +79,11 @@ signals:
 
 public slots:
 
+public:
+    ~CorpusRepository();
+
 private:
     CorpusRepository(const CorpusRepositoryDefinition &definition, QObject *parent = 0);
-    ~CorpusRepository();
 
     CorpusRepositoryData *d;
 };

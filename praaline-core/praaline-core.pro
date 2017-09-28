@@ -149,7 +149,6 @@ HEADERS += \
     annotation/IntervalTier.h \
     annotation/Point.h \
     annotation/PointTier.h \
-    annotation/SpeakerTimeline.h \
     annotation/TreeTier.h \
     interfaces/praat/PraatTextFile.h \
     interfaces/praat/PraatTextGrid.h \
@@ -205,7 +204,10 @@ HEADERS += \
     base/ISaveable.h \
     serialisers/xml/XMLSerialiserMetadata.h \
     interfaces/praat/AnnotationInterfacePraat.h \
-    statistics/Measures.h
+    statistics/Measures.h \
+    interfaces/phon/PhonTranscription.h \
+    interfaces/ImportAnnotations.h \
+    statistics/SpeakerTimeline.h
 
 SOURCES += \
     base/RealTime.cpp \
@@ -322,7 +324,6 @@ SOURCES += \
     annotation/IntervalTier.cpp \
     annotation/Point.cpp \
     annotation/PointTier.cpp \
-    annotation/SpeakerTimeline.cpp \
     annotation/TreeTier.cpp \
     interfaces/praat/PraatTextFile.cpp \
     interfaces/praat/PraatTextGrid.cpp \
@@ -372,5 +373,8 @@ SOURCES += \
     datastore/CorpusDatastore.cpp \
     serialisers/xml/XMLSerialiserMetadata.cpp \
     interfaces/praat/AnnotationInterfacePraat.cpp \
-    statistics/Measures.cpp
-
+    statistics/Measures.cpp \
+    interfaces/phon/PhonTranscription.cpp \
+    interfaces/ImportAnnotations.cpp \
+    statistics/SpeakerTimeline.cpp
+    
