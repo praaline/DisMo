@@ -9,3 +9,6 @@ SUBDIRS += crfpp praaline-core dismo \
            app-gui app-cli app-trainer # \
            # praaline-plugin
 
+RESOURCES += \
+    app-gui/app-gui-resources.qrc
+

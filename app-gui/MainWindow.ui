@@ -6,35 +6,454 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1305</width>
+    <height>756</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DisMo Annotator v. 0.4 BETA 3</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
-  <widget class="QMenuBar" name="menuBar">
+  <property name="windowIcon">
+   <iconset resource="app-gui-resources.qrc">
+    <normaloff>:/dismo/icons/corpus_annotation.png</normaloff>:/dismo/icons/corpus_annotation.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_6">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QWidget" name="widgetCorpus" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>2</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QToolBar" name="toolBar">
+          <property name="windowTitle">
+           <string>toolBar</string>
+          </property>
+          <addaction name="actionCorpusNew"/>
+          <addaction name="actionCorpusOpen"/>
+          <addaction name="actionCorpusSave"/>
+          <addaction name="separator"/>
+          <addaction name="actionCorpusAddFile"/>
+          <addaction name="actionCorpusRemoveFile"/>
+          <addaction name="actionCorpusAddFromFolder"/>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QTreeView" name="treeviewCorpus"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>4</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <property name="documentMode">
+        <bool>false</bool>
+       </property>
+       <property name="tabsClosable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="tabDismo">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <attribute name="title">
+         <string>DisMo</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayoutTop">
+           <item row="0" column="1">
+            <widget class="QGroupBox" name="groupBoxTiers">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Tiers</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="checkOutputDisfluencies">
+                <property name="text">
+                 <string>Disfluencies</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="2">
+               <widget class="QCheckBox" name="checkOutputDiscourse">
+                <property name="text">
+                 <string>Discourse</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1" colspan="2">
+               <widget class="QLineEdit" name="editDismoTierPrefix">
+                <property name="text">
+                 <string>dismo-</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0" colspan="2">
+               <widget class="QCheckBox" name="checkOutputTokMin">
+                <property name="text">
+                 <string>Tokens (Minimal)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_2">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>DisMo tiers prefix:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="checkOutputTokMWU">
+                <property name="text">
+                 <string>Tokens (MWU)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="0">
+               <widget class="QCheckBox" name="checkOutputBoundaries">
+                <property name="text">
+                 <string>Boundaries</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QCheckBox" name="checkOutputPOSMin">
+                <property name="text">
+                 <string>POS (Minimal)</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="2">
+               <widget class="QCheckBox" name="checkOutputPOSMWU">
+                <property name="text">
+                 <string>POS (MWU)</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="groupBoxOutput">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="title">
+              <string>Annotation options</string>
+             </property>
+             <layout class="QFormLayout" name="formLayout_2">
+              <item row="0" column="0">
+               <widget class="QCheckBox" name="checkAddAnnotations">
+                <property name="text">
+                 <string>Add DisMo annotation tiers to the selected corpus items (TextGrid and Table files).</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="0" column="0">
+                 <widget class="QCheckBox" name="checkCreateCopies">
+                  <property name="text">
+                   <string>Create copies of TextGrid files with the following suffix:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="editSuffix">
+                  <property name="text">
+                   <string>_dismo</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0">
+               <widget class="QCheckBox" name="checkCreateTablesEach">
+                <property name="text">
+                 <string>Create a tab-separated file for each corpus item annotated.</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QCheckBox" name="checkCreateTableFull">
+                <property name="text">
+                 <string>Create a tab-separated file for the entire corpus.</string>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Tier to annotate:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="editInputTier"/>
+                </item>
+               </layout>
+              </item>
+              <item row="4" column="0" colspan="2">
+               <widget class="QCheckBox" name="checkOverwrite">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="text">
+                 <string>Overwrite existing files without asking.</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QGridLayout" name="gridLayoutBottom">
+           <item row="0" column="0">
+            <widget class="QCommandLinkButton" name="commandAnnotate">
+             <property name="text">
+              <string>Annotate!</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QTextBrowser" name="textProgress"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QProgressBar" name="progressBarAnnotation">
+             <property name="value">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="tabResults">
+        <attribute name="title">
+         <string>Results</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QTableView" name="tableviewResults"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>1305</width>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionCorpusNew"/>
+    <addaction name="actionCorpusOpen"/>
+    <addaction name="actionCorpusSave"/>
+    <addaction name="actionCorpusSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionCorpusAddFile"/>
+    <addaction name="actionCorpusRemoveFile"/>
+    <addaction name="actionCorpusAddFromFolder"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuAnnotator">
+    <property name="title">
+     <string>Annotate</string>
+    </property>
+    <addaction name="actionAnnotate"/>
+    <addaction name="actionEvaluation"/>
+   </widget>
+   <widget class="QMenu" name="menuData">
+    <property name="title">
+     <string>Data</string>
+    </property>
+    <addaction name="actionLoadTabFileForCorpus"/>
+    <addaction name="actionSaveTextgrids"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveTabFiles"/>
+    <addaction name="actionSaveTabFileForCorpus"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuAnnotator"/>
+   <addaction name="menuData"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
-  </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCorpusAddFile">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/add_file.png</normaloff>:/dismo/icons/add_file.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add File to Corpus...</string>
+   </property>
+  </action>
+  <action name="actionCorpusRemoveFile">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/remove_file.png</normaloff>:/dismo/icons/remove_file.png</iconset>
+   </property>
+   <property name="text">
+    <string>Remove File</string>
+   </property>
+  </action>
+  <action name="actionCorpusAddFromFolder">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/add_folder.png</normaloff>:/dismo/icons/add_folder.png</iconset>
+   </property>
+   <property name="text">
+    <string>Add Files From Folder...</string>
+   </property>
+  </action>
+  <action name="actionCorpusNew">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/corpus_new.png</normaloff>:/dismo/icons/corpus_new.png</iconset>
+   </property>
+   <property name="text">
+    <string>New Corpus</string>
+   </property>
+  </action>
+  <action name="actionCorpusOpen">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/corpus_open.png</normaloff>:/dismo/icons/corpus_open.png</iconset>
+   </property>
+   <property name="text">
+    <string>Open Corpus...</string>
+   </property>
+  </action>
+  <action name="actionCorpusSave">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/corpus_save.png</normaloff>:/dismo/icons/corpus_save.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Corpus</string>
+   </property>
+  </action>
+  <action name="actionCorpusSaveAs">
+   <property name="icon">
+    <iconset resource="app-gui-resources.qrc">
+     <normaloff>:/dismo/icons/corpus_saveas.png</normaloff>:/dismo/icons/corpus_saveas.png</iconset>
+   </property>
+   <property name="text">
+    <string>Save Corpus As...</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAnnotate">
+   <property name="text">
+    <string>Annotate Corpus</string>
+   </property>
+  </action>
+  <action name="actionEvaluation">
+   <property name="text">
+    <string>Evaluate Annotator</string>
+   </property>
+  </action>
+  <action name="actionSaveTextgrids">
+   <property name="text">
+    <string>Save Textgrids</string>
+   </property>
+  </action>
+  <action name="actionSaveTabFiles">
+   <property name="text">
+    <string>Export Tab-separated Files...</string>
+   </property>
+  </action>
+  <action name="actionSaveTabFileForCorpus">
+   <property name="text">
+    <string>Export Tab-separated File for Entire Corpus...</string>
+   </property>
+  </action>
+  <action name="actionLoadTabFileForCorpus">
+   <property name="text">
+    <string>Load Tab-separated File...</string>
+   </property>
+  </action>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="app-gui-resources.qrc"/>
+  <include location="app-gui-resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/dismo">
+        <file>icons/corpus_new.png</file>
+        <file>icons/corpus_open.png</file>
+        <file>icons/corpus_save.png</file>
+        <file>icons/corpus_saveas.png</file>
+        <file>icons/add_file.png</file>
+        <file>icons/add_folder.png</file>
+        <file>icons/remove_file.png</file>
+        <file>icons/corpus_annotation.png</file>
+    </qresource>
+</RCC>

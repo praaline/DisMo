@@ -19,7 +19,7 @@ UI_DIR = $$DESTDIR/.ui
 
 win32 {
     CONFIG(debug, debug|release) {
-        PRAALINE_LIB_POSTFIX = d$${PRAALINE_FILE_VER}
+        PRAALINE_LIB_POSTFIX = -d$${PRAALINE_FILE_VER}
     } else {
         PRAALINE_LIB_POSTFIX = $${PRAALINE_FILE_VER}
     }
@@ -27,7 +27,7 @@ win32 {
 }
 unix {
     CONFIG(debug, debug|release) {
-        PRAALINE_LIB_POSTFIX = d$${PRAALINE_FILE_VER}
+        PRAALINE_LIB_POSTFIX = -d$${PRAALINE_FILE_VER}
     } else {
         PRAALINE_LIB_POSTFIX = $${PRAALINE_FILE_VER}
     }
