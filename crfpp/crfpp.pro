@@ -14,7 +14,10 @@ TARGET = crfpp
 
 INCLUDEPATH += . ..
 DEPENDPATH += . ..
-DEFINES += HAVE_CRFPP_CONFIG_H
+
+unix {
+    DEFINES += HAVE_CRFPP_CONFIG_H
+}
 
 HEADERS += \
     common.h \
