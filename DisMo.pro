@@ -6,5 +6,6 @@ TEMPLATE = subdirs
 CONFIG += ordered
 
 SUBDIRS += crfpp praaline-core dismo \
-           praaline-plugin app-gui app-cli app-trainer
+           app-gui app-cli app-trainer # \
+           # praaline-plugin
 
