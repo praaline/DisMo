@@ -4,6 +4,8 @@
 
 # Distribution and ancillary files
 
+TEMPLATE = lib
+
 DISTFILES += \
     ../README.md \
     ../LICENSE \

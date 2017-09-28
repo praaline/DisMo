@@ -4,5 +4,12 @@
 
 # Praaline basic functions library
 
+! include( ../common.pri ) {
+    error( Could not find the common.pri file! )
+}
+
+CONFIG += staticlib qt thread warn_on stl rtti exceptions c++11
+
+TARGET = praalinelib
 
 
