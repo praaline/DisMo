@@ -13,3 +13,9 @@ CONFIG += staticlib qt thread warn_on stl rtti exceptions c++11
 TARGET = dismolib
 
 
+
+DISTFILES += \
+    ../README.md \
+    ../LICENSE \
+    ../.travis.yml \
+    ../appveyor.yml
