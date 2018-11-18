@@ -191,9 +191,9 @@ class TaggerImpl : public Tagger {
   };
 
   class QueueElementComp {
-   public:
-    const bool operator()(QueueElement *q1,
-                          QueueElement *q2)
+    public:
+    bool operator()(QueueElement *q1,
+                    QueueElement *q2)
     { return(q1->fx > q2->fx); }
   };
 
