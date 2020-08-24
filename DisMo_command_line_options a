@@ -1,0 +1,20 @@
+--append-annotations 	-aa		default: yes
+--out-filename-prefix	-fp		default:
+--out-filename-suffix	-fs		default: _dismo
+--out-table-for-each	-te
+--out-table-for-all	 	-ta
+--overwrite			 	-ow		default: yes
+--txg-all-tiers			-xt
+--txg-input-tier		-xi 
+--out-txg-mode			-sp		per-speaker, multi-speaker default: per-speaker
+--out-tier-prefix		-op
+--out-tier-suffix		-os
+--out-tok-min					yes/no	default: yes
+--out-pos-min					yes/no	default: yes
+--out-tier-disfluency			yes/no	default: yes
+--out-tier-tok-mwu				yes/no	default: yes
+--out-tier-pos-mwu				yes/no	default: yes
+--out-tier-discourse			yes/no	default: yes
+--out-tier-boundary				yes/no	default: yes
+
+https://repository.ortolang.fr/api/content/exportations/c9e76aaa-48f6-4810-a989-cd39ddddc710
