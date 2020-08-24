@@ -14,7 +14,9 @@
 
 #include <QString>
 #include <QCoreApplication>
-#include "annotation/AnnotationTierGroup.h"
+
+#include "PraalineCore/Annotation/AnnotationTierGroup.h"
+
 #include "PreProcessor.h"
 #include "BoundaryDetector.h"
 #include "DisfluencyDetector.h"
@@ -24,6 +26,7 @@
 #include "Tokenizer.h"
 #include "TokenList.h"
 #include "DisMoAnnotator.h"
+#include "DisMoConfiguration.h"
 using namespace DisMoAnnotator;
 
 DismoAnnotator::DismoAnnotator(const QString &language)
@@ -31,11 +34,10 @@ DismoAnnotator::DismoAnnotator(const QString &language)
 {
     // default model filenames
     // DIRECTORY:
-    QString appPath = QCoreApplication::applicationDirPath();
-    m_modelFilename_POSMin = appPath + "/plugins/dismo/models/posmin_" + language + ".model";
-    m_modelFilename_Disfluency = appPath + "/plugins/dismo/models/disfluency_" + language + ".model";
-    m_modelFilename_Discourse = appPath + "/plugins/dismo/models/discourse_" + language + ".model";
-    m_modelFilename_POSFin = appPath + "/plugins/dismo/models/posfin_" + language + ".model";
+    m_modelFilename_POSMin = DisMoConfiguration::resourcesPath() + "/models/posmin_" + language + ".model";
+    m_modelFilename_Disfluency = DisMoConfiguration::resourcesPath() + "/models/disfluency_" + language + ".model";
+    m_modelFilename_Discourse = DisMoConfiguration::resourcesPath() + "/models/discourse_" + language + ".model";
+    m_modelFilename_POSFin = DisMoConfiguration::resourcesPath() + "/models/posfin_" + language + ".model";
 }
 
 DismoAnnotator::~DismoAnnotator()
@@ -76,7 +78,7 @@ bool DismoAnnotator::annotate(IntervalTier *tier_input,
     POSTAG.tagTokens(m_modelFilename_POSFin);
     POSTPRO.process(true); // will merge tokens
 
-    TL.writeToTiers(tier_tok_min, 0, tier_tok_mwu, 0, 0, 0, 0);
+    TL.writeToTiers(tier_tok_min, nullptr, tier_tok_mwu, nullptr, nullptr, nullptr, nullptr);
     return true;
 }
 

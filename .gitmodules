@@ -1,0 +1,3 @@
+[submodule "praaline-core"]
+	path = praaline-core
+	url = https://github.com/praaline/praaline-core

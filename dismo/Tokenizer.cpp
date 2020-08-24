@@ -23,20 +23,20 @@
 #include <QPointer>
 #include <QDebug>
 
-#include "annotation/Interval.h"
-#include "annotation/IntervalTier.h"
+#include "PraalineCore/Annotation/Interval.h"
+#include "PraalineCore/Annotation/IntervalTier.h"
+
 #include "Token.h"
 #include "TokenUnit.h"
 #include "Tokenizer.h"
+#include "DisMoConfiguration.h"
 using namespace DisMoAnnotator;
 
 Tokenizer::Tokenizer(QString &language, QList<TokenUnit *> &tokenUnits) :
     m_language(language), m_tokenUnits(tokenUnits)
 {
     // Read tokenize together list
-    // DIRECTORY:
-    QString appPath = QCoreApplication::applicationDirPath();
-    QFile file(appPath + "/plugins/dismo/lex/tokenizetogether_" + language + ".txt");
+    QFile file(DisMoConfiguration::filePathTokeniserKeepTogether(m_language));
     if ( !file.open( QIODevice::ReadOnly | QIODevice::Text ) ) return;
     QString line;
     QTextStream stream(&file);

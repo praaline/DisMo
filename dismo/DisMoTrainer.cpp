@@ -19,20 +19,23 @@
 #include <QFile>
 #include <QTextStream>
 #include <QCoreApplication>
-#include "interfaces/praat/PraatTextGrid.h"
-#include "annotation/AnnotationTierGroup.h"
+
+#include "PraalineCore/Interfaces/Praat/PraatTextGrid.h"
+#include "PraalineCore/Annotation/AnnotationTierGroup.h"
+
 #include "TokenList.h"
 #include "PreProcessor.h"
 #include "POSTagger.h"
 #include "DisfluencyDetector.h"
 #include "DiscourseTagger.h"
 #include "DisMoTrainer.h"
+#include "DisMoConfiguration.h"
 using namespace DisMoAnnotator;
 
 DismoTrainer::DismoTrainer(const QString modelsPath) {
     m_modelsPath = modelsPath;
     if (modelsPath.isEmpty()) {
-        m_modelsPath = QCoreApplication::applicationDirPath();
+        m_modelsPath = DisMoConfiguration::resourcesPath() + "/models";
     }
 }
 
