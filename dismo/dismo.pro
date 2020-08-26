@@ -12,10 +12,15 @@ CONFIG += staticlib qt thread warn_on stl rtti exceptions c++11
 QT += sql
 QT -= gui
 
-INCLUDEPATH += . .. ../praaline-core
-DEPENDPATH += . .. ../praaline-core
+INCLUDEPATH += . ..
+DEPENDPATH += . ..
 
 TARGET = dismo
+
+# Dependency: PraalineCore
+DEFINES += USE_NAMESPACE_PRAALINE_CORE
+INCLUDEPATH += ../praaline-core/include
+DEPENDPATH += ../praaline-core
 
 DISTFILES += \
     ../README.md \

@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QStandardItemModel>
-#include "corpus/Corpus.h"
+#include "PraalineCore/Corpus/Corpus.h"
 
 class AnnotationsTableModel : public QStandardItemModel
 {

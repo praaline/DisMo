@@ -18,5 +18,9 @@ TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    DisMoOptions.cpp
+
+HEADERS += \
+    DisMoOptions.h
 

@@ -2,10 +2,10 @@
 #include <QStringList>
 #include <QStandardItemModel>
 
-#include "corpus/Corpus.h"
-#include "corpus/CorpusObject.h"
-#include "corpus/CorpusCommunication.h"
-#include "corpus/CorpusAnnotation.h"
+#include "PraalineCore/Corpus/Corpus.h"
+#include "PraalineCore/Corpus/CorpusObject.h"
+#include "PraalineCore/Corpus/CorpusCommunication.h"
+#include "PraalineCore/Corpus/CorpusAnnotation.h"
 using namespace Praaline::Core;
 
 #include "AnnotationsTableModel.h"

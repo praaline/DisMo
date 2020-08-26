@@ -17,8 +17,13 @@ TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
 
-INCLUDEPATH += . .. ../praaline-core
-DEPENDPATH += . .. ../praaline-core
+INCLUDEPATH += . ..
+DEPENDPATH += . ..
+
+# Dependency: PraalineCore
+DEFINES += USE_NAMESPACE_PRAALINE_CORE
+INCLUDEPATH += ../praaline-core/include
+DEPENDPATH += ../praaline-core
 
 # Build folder organisation
 CONFIG( debug, debug|release ) {
